@@ -19,21 +19,17 @@ public class NewtonMethodFunction implements MathFunction {
     @Override
     public double apply(double x) {
         double xn;
-        for (int i = 0; i < 1000000; i++) {
+        do {
+            xn = x;
             double f = function.apply(x);
             double pr_f = derivative(x);
 
-            if (Math.abs(pr_f) < tolerance) break;
+            if (Math.abs(pr_f) < tolerance) return Double.NaN; // производная слишком мала, то метод не сходится
 
-            xn = x - f / pr_f;
+            x = xn - f / pr_f;
 
-            if (Math.abs(xn - x) < tolerance) {
-                return xn;
-            }
+        }while (Math.abs(xn - x) > tolerance); // продолжаем до тех пор, пока изменение больше заданного порога tolerance
 
-            x = xn;
-        }
-
-        return Double.NaN; // function does not converge to zero
+        return x;
     }
 }
