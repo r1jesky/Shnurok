@@ -1,6 +1,6 @@
 package ru.ssau.tk.shnurok.lab2.coredefenitions;
 
-abstract class AbstractTabulatedFunction implements TabulatedFunction {
+public abstract class AbstractTabulatedFunction implements TabulatedFunction {
 
     abstract protected int floorIndexOfX(double x);
 
