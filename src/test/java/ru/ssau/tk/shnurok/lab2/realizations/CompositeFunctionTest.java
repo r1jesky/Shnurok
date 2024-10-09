@@ -34,15 +34,5 @@ class CompositeFunctionTest {
         CompositeFunction h = new CompositeFunction(f, f);
         assertEquals(1.0, h.apply(1.0), 0.01);
     }
-/*
-    @Test
-    public void testLinkedListTabulatedFunction() {
-        LinkedListTabulatedFunction f = new LinkedListTabulatedFunction();
-        f.fillList(0.0, 10.0, 10);
-        MathFunction g = x -> x + 1;
-        CompositeFunction h = new CompositeFunction(f, g);
-        assertEquals(2.0, h.apply(1.0), 0.01);
-    }
-*/
 
 }
