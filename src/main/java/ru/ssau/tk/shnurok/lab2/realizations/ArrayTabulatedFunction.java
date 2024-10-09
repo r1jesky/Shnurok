@@ -11,6 +11,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
     protected double[] yValues;
     protected int count;
 
+    
 
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
         if (xValues.length!=yValues.length) throw new IllegalArgumentException("raznoe(");
