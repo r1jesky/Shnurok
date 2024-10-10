@@ -12,4 +12,10 @@ class ConstantFunctionTest {
 
         assertEquals(52,constantFunction.apply(17));
     }
+
+    @Test
+    public void testApply_GetValidConstant(){
+        ConstantFunction constantFunction = new ConstantFunction(5.2);
+        assertEquals(5.2,constantFunction.getConstant());
+    }
 }
