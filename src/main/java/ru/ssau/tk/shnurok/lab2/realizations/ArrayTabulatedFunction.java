@@ -84,7 +84,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     public double getY(int index) {
-        return xValues[index];
+        return yValues[index];
     }
 
     @Override
