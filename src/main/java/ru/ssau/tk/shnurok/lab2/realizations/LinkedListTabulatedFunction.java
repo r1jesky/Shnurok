@@ -216,6 +216,18 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
             return;
 
         }
+        if(tmp.next.x<x&&tmp.x<x){
+            Node node = new Node(x,y);
+            Node tail = head.prev;
+
+            tail.next = node;
+            node.next = head;
+            node.prev = tail;
+            head.prev = node;
+
+            count++;
+            return;
+        }
     }
 
     @Override
