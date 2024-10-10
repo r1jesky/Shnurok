@@ -18,4 +18,8 @@ class PolynomalInetrpolationFunctionTest {
 
     }
 
+    public void ConstructTest(){
+        double[] xVal = {1.,2.,3.};
+        double[] yVal = {3.,8.,17.};
+    }
 }

@@ -14,9 +14,9 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
         if (xValues.length!=yValues.length) throw new IllegalArgumentException("raznoe(");
 
-        this.count = xValues.length;
         this.xValues = Arrays.copyOf(xValues,xValues.length);
         this.yValues = Arrays.copyOf(yValues,yValues.length);
+        this.count = xValues.length;
 
     }
 
@@ -67,7 +67,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
 
     @Override
     protected double interpolate(double x, int floorIndex) {
-        return interpolate(x,xValues[floorIndex],xValues[floorIndex+1],yValues[floorIndex],yValues[floorIndex+1]);
+        return interpolate(x,xValues[floorIndex-1],xValues[floorIndex],yValues[floorIndex-1],yValues[floorIndex]);
     }
 
     @Override

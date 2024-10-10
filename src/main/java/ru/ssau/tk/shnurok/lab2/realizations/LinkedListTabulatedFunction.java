@@ -178,12 +178,13 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
             if(tmp.x == x) tmp.y = y;
             if (tmp.x > x && tmp.prev.x <x) {
                 Node node = new Node(x,y);
-                Node prev = tmp.prev;
+                Node next = tmp.next;
 
-                prev.next = node;
-                node.next = tmp;
-                node.prev = prev;
-                tmp.prev = node;
+                tmp.next = node;
+                node.prev = tmp;
+                node.next = next;
+                next.prev = node;
+
 
                 count++;
                 return;
