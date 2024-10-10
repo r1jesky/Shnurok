@@ -6,19 +6,16 @@ import ru.ssau.tk.shnurok.lab2.coredefenitions.MathFunction;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTabulatedFunctionTest {
-    /* @Test
-    public void testInsert() {
-        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction();
-        function.insert(1, 2);
-        assertEquals(1, function.getCount());
-        assertEquals(1, function.getX(0));
-        assertEquals(2, function.getY(0));
 
-        function.insert(2, 3);
+    @Test
+    public void testRemove() {
+        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(new double[] {1, 2, 3}, new double[] {4, 5, 6});
+        function.remove(1);
         assertEquals(2, function.getCount());
-        function.insert(1.5, 2.5);
-        assertEquals(3, function.getCount());
-        assertEquals(2.5, function.getY(1)); // Проверка обновления
+        assertEquals(1, function.getX(0), 0.01);
+        assertEquals(4, function.getY(0), 0.01);
+        assertEquals(3, function.getX(1), 0.01);
+        assertEquals(6, function.getY(1), 0.01);
     }
 
     @Test
@@ -29,6 +26,39 @@ class LinkedListTabulatedFunctionTest {
         assertEquals(3, function.getCount());
         assertEquals(1, function.getX(0));
         assertEquals(2, function.getY(0));
+    }
+
+    @Test
+    public void testConstructorWithMathFunction() {
+        MathFunction source = x -> x * x; // example math function
+        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(source, 0, 3, 4);
+        assertEquals(4, function.getCount());
+
+        // Проверяем, что количество элементов соответствует ожиданиям
+        assertEquals(4, function.count);
+
+        // Check values at x = 1, 2, 3
+        assertEquals(1, function.getX(1), 0.01);
+        assertEquals(1, function.getY(1), 0.01);
+
+        assertEquals(2, function.getX(2), 0.01);
+        assertEquals(4, function.getY(2), 0.01);
+
+        assertEquals(3, function.getX(3), 0.01);
+        assertEquals(9, function.getY(3), 0.01);
+    }
+
+
+    @Test
+    public void testLeftBound() {
+        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(new double[] {1, 2, 3}, new double[] {4, 5, 6});
+        assertEquals(1, function.leftBound(), 0.01);
+    }
+
+    @Test
+    public void testRightBound() {
+        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(new double[] {1, 2, 3}, new double[] {4, 5, 6});
+        assertEquals(3, function.rightBound(), 0.01);
     }
 
     @Test
@@ -45,18 +75,18 @@ class LinkedListTabulatedFunctionTest {
 
     @Test
     public void testFloorIndexOfX() {
-        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(new double[]{1, 2, 3}, new double[]{2, 3, 4});
-        assertEquals(1, function.floorIndexOfX(2.5));
+        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(new double[] {1, 2, 3}, new double[] {4, 5, 6});
+        assertEquals(0, function.floorIndexOfX(0.5));
         assertEquals(0, function.floorIndexOfX(1));
-        assertEquals(2, function.floorIndexOfX(4));
+        assertEquals(0, function.floorIndexOfX(1.5));
+        assertEquals(1, function.floorIndexOfX(2.5));
+        assertEquals(1, function.floorIndexOfX(3));
     }
 
     @Test
     public void testGetCount() {
-        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction();
-        function.insert(1, 2);
-        function.insert(2, 3);
-        assertEquals(2, function.getCount());
+        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(new double[] {1, 2, 3}, new double[] {4, 5, 6});
+        assertEquals(3, function.getCount());
     }
 
     @Test
@@ -79,19 +109,4 @@ class LinkedListTabulatedFunctionTest {
         function.setY(0, 5);
         assertEquals(5, function.getY(0));
     }
-
-    @Test
-    public void testConstructorWithMathFunction() {
-        MathFunction source = new MathFunction() {
-            @Override
-            public double apply(double x) {
-                return x * 2; // Пример функции
-            }
-        };
-        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(source, 1, 3, 3);
-        assertEquals(3, function.getCount());
-        assertEquals(2, function.getY(0)); // При x = 1
-        assertEquals(4, function.getY(1)); // При x = 2
-        assertEquals(6, function.getY(2)); // При x = 3
-    }*/
 }
