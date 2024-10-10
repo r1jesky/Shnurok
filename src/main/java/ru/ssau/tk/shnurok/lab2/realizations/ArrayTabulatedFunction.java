@@ -1,11 +1,13 @@
 package ru.ssau.tk.shnurok.lab2.realizations;
 
 import ru.ssau.tk.shnurok.lab2.coredefenitions.AbstractTabulatedFunction;
+import ru.ssau.tk.shnurok.lab2.coredefenitions.Insertable;
 import ru.ssau.tk.shnurok.lab2.coredefenitions.MathFunction;
+import ru.ssau.tk.shnurok.lab2.coredefenitions.Removable;
 
 import java.util.Arrays;
 
-public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
+public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
     protected double[] xValues;
     protected double[] yValues;
     protected int count;
@@ -115,4 +117,41 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
     public double rightBound() {
         return xValues[xValues.length-1];
     }
+
+    @Override
+    public void insert(double x, double y) {
+        int index = indexOfX(x);
+        if (index != -1) {
+            yValues[index] = y;
+        } else {
+            double[] newXValues = new double[xValues.length + 1];
+            double[] newYValues = new double[yValues.length + 1];
+            System.arraycopy(xValues, 0, newXValues, 0, xValues.length);
+            System.arraycopy(yValues, 0, newYValues, 0, yValues.length);
+            int insertIndex = floorIndexOfX(x);
+            System.arraycopy(xValues, insertIndex, newXValues, insertIndex + 1, xValues.length - insertIndex);
+            System.arraycopy(yValues, insertIndex, newYValues, insertIndex + 1, yValues.length - insertIndex);
+            newXValues[insertIndex] = x;
+            newYValues[insertIndex] = y;
+            xValues = newXValues;
+            yValues = newYValues;
+            count++;
+        }
+    }
+    @Override
+    public void remove(int index) {
+        if (index < 0 || index >= count) {
+            throw new IndexOutOfBoundsException("index is outside");
+        }
+        double[] newXValues = new double[xValues.length - 1];
+        double[] newYValues = new double[yValues.length - 1];
+        System.arraycopy(xValues, 0, newXValues, 0, index);
+        System.arraycopy(yValues, 0, newYValues, 0, index);
+        System.arraycopy(xValues, index + 1, newXValues, index, xValues.length - index - 1);
+        System.arraycopy(yValues, index + 1, newYValues, index, yValues.length - index - 1);
+        xValues = newXValues;
+        yValues = newYValues;
+        count--;
+    }
+
 }
