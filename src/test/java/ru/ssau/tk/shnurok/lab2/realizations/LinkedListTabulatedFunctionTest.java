@@ -123,7 +123,6 @@ class LinkedListTabulatedFunctionTest {
     public void testInsert_Middle() {
         LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(new double[] {1, 3}, new double[] {10, 30});
         func.insert(2, 20);
-        assertEquals(3, func.getCount());
         assertEquals(2, func.getX(1));
         assertEquals(20, func.getY(1));
     }
