@@ -8,11 +8,22 @@ class ArrayTabulatedFunctionTest {
 
     @Test
     void floorIndexOfX() {
+        double[] xVal = {1.,2.,3.};
+        double[] yVal = {2.,5.,8.};
+        ArrayTabulatedFunction arrayTabulatedFunction = new ArrayTabulatedFunction(xVal,yVal);
 
+        assertEquals(2,arrayTabulatedFunction.floorIndexOfX(3.5));
+        assertEquals(1,arrayTabulatedFunction.floorIndexOfX(2.75));
+        assertEquals(0,arrayTabulatedFunction.floorIndexOfX(-1));
     }
 
     @Test
     void extrapolateLeft() {
+        double[] xVal = {1.,2.,3.};
+        double[] yVal = {2.,5.,8.};
+        ArrayTabulatedFunction arrayTabulatedFunction = new ArrayTabulatedFunction(xVal,yVal);
+
+        assertEquals(-4,arrayTabulatedFunction.extrapolateRight(-1));
     }
 
     @Test
@@ -21,7 +32,7 @@ class ArrayTabulatedFunctionTest {
         double[] yVal = {2.,5.,8.};
         ArrayTabulatedFunction arrayTabulatedFunction = new ArrayTabulatedFunction(xVal,yVal);
 
-        assertEquals(5,arrayTabulatedFunction.extrapolateRight(5));
+        assertEquals(14,arrayTabulatedFunction.extrapolateRight(5));
     }
 
     @Test
@@ -104,5 +115,25 @@ class ArrayTabulatedFunctionTest {
         ArrayTabulatedFunction arrayTabulatedFunction = new ArrayTabulatedFunction(xVal,yVal);
 
         assertEquals(3,arrayTabulatedFunction.rightBound());
+    }
+
+    @Test
+    void InserTest(){
+        double[] xVal = {1.,2.,3.};
+        double[] yVal = {2.,5.,8.};
+        ArrayTabulatedFunction arrayTabulatedFunction = new ArrayTabulatedFunction(xVal,yVal);
+        arrayTabulatedFunction.insert(1.5,4.);
+
+        assertEquals(1.5,arrayTabulatedFunction.getX(0));
+    }
+
+    @Test
+    void RemoveTest(){
+        double[] xVal = {1.,2.,3.};
+        double[] yVal = {2.,5.,8.};
+        ArrayTabulatedFunction arrayTabulatedFunction = new ArrayTabulatedFunction(xVal,yVal);
+        arrayTabulatedFunction.remove(1);
+
+        assertEquals(3,arrayTabulatedFunction.getX(arrayTabulatedFunction.xValues.length-1));
     }
 }
