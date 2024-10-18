@@ -1,4 +1,4 @@
-package ru.ssau.tk.shnurok.lab2.realizations;
+package ru.ssau.tk.shnurok.lab2.functions.realizations;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ class PolynomalInetrpolationFunctionTest {
         double[] xVal = {1.,2.,3.};
         double[] yVal = {3.,8.,17.};
 
-        PolynomalInetrpolationFunction polynomalInetrpolationFunction = new PolynomalInetrpolationFunction(xVal,yVal);
+        PolynomialInterpolationFunction polynomalInetrpolationFunction = new PolynomialInterpolationFunction(xVal,yVal);
 
         assertEquals(8,polynomalInetrpolationFunction.apply(2));
         assertEquals(498,polynomalInetrpolationFunction.apply(16));

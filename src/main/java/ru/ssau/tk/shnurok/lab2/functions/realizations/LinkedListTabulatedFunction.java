@@ -1,9 +1,9 @@
-package ru.ssau.tk.shnurok.lab2.realizations;
+package ru.ssau.tk.shnurok.lab2.functions.realizations;
 
-import ru.ssau.tk.shnurok.lab2.coredefenitions.AbstractTabulatedFunction;
-import ru.ssau.tk.shnurok.lab2.coredefenitions.Insertable;
-import ru.ssau.tk.shnurok.lab2.coredefenitions.MathFunction;
-import ru.ssau.tk.shnurok.lab2.coredefenitions.Removable;
+import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.AbstractTabulatedFunction;
+import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Insertable;
+import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
+import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Removable;
 
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
 

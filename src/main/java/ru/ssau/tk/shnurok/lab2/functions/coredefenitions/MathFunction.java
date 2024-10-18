@@ -1,6 +1,6 @@
-package ru.ssau.tk.shnurok.lab2.coredefenitions;
+package ru.ssau.tk.shnurok.lab2.functions.coredefenitions;
 
-import ru.ssau.tk.shnurok.lab2.realizations.CompositeFunction;
+import ru.ssau.tk.shnurok.lab2.functions.realizations.CompositeFunction;
 
 public interface MathFunction {
     double apply(double x);
