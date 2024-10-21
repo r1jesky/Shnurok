@@ -6,6 +6,7 @@ import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Removable;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
     protected double[] xValues;
@@ -152,6 +153,11 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         xValues = newXValues;
         yValues = newYValues;
         count--;
+    }
+
+    @Override
+    public Iterator<Point> iterator() {
+        throw new UnsupportedOperationException("Итерация не поддерживается");
     }
 
 }

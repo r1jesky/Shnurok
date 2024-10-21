@@ -5,6 +5,9 @@ import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Insertable;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Removable;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
 
 
@@ -41,6 +44,9 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     }
 
     public LinkedListTabulatedFunction(double[] xValues, double[] yValues) {
+        if (xValues.length < 2 || yValues.length < 2) {
+            throw new IllegalArgumentException("Длина таблицы должна быть не менее 2");
+        }
         for (int i = 0; i < xValues.length; ++i) {
             addNode(xValues[i], yValues[i]);
         }
@@ -86,6 +92,9 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     protected int floorIndexOfX(double x) {
+        if (x < head.x) {
+            throw new IllegalArgumentException("x меньше левой границы: " + x);
+        }
         Node cur = head;
         int i = 0;
         do {
@@ -100,24 +109,18 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     protected double extrapolateLeft(double x) {
-        if (count == 1)
-            return head.y;
         return interpolate(x,head.x,head.next.x,head.y,head.next.y);
 
     }
 
     @Override
     protected double extrapolateRight(double x) {
-        if (count == 1)
-            return head.y;
         return interpolate(x, head.prev.prev.x, head.prev.x, head.prev.prev.y, head.prev.y);
 
     }
 
     @Override
     protected double interpolate(double x, int floorIndex) {
-        if (count == 1)
-            return head.y;
         Node floorNode = getNode(floorIndex);
         return interpolate(x,floorNode.x,floorNode.next.x,floorNode.y,floorNode.next.y);
 
@@ -130,6 +133,9 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     public double getX(int index) {
+        if (index < 0 || index >= count) {
+            throw new IllegalArgumentException("Индекс вне диапазона: " + index);
+        }
         return getNode(index).x;
     }
 
@@ -245,5 +251,30 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
             prev.next = next;
         }
     count--;
+    }
+
+    @Override
+    public Iterator<Point> iterator() {
+        //throw new UnsupportedOperationException("Итерация не поддерживается");
+
+        return new Iterator<Point>() {
+            private Node node = head; // Изначально указываем на head
+
+            @Override
+            public boolean hasNext() {
+                return node != null; // Проверяем, есть ли следующий элемент
+            }
+
+            @Override
+            public Point next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException("Нет больше элементов для итерации");
+                }
+                Point point = new Point(node.x, node.y); // Создаем объект Point
+                node = node.next; // Сдвигаем указатель на следующий элемент
+                return point; // Возвращаем текущую точку
+            }
+        };
+
     }
 }
