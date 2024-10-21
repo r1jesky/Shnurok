@@ -1,4 +1,4 @@
-package ru.ssau.tk.shnurok.lab2.realizations;
+package ru.ssau.tk.shnurok.lab2.functions.realizations;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,5 +11,11 @@ class ConstantFunctionTest {
         ConstantFunction constantFunction = new ConstantFunction(52);
 
         assertEquals(52,constantFunction.apply(17));
+    }
+
+    @Test
+    public void testApply_GetValidConstant(){
+        ConstantFunction constantFunction = new ConstantFunction(5.2);
+        assertEquals(5.2,constantFunction.getConstant());
     }
 }

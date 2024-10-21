@@ -1,9 +1,9 @@
-package ru.ssau.tk.shnurok.lab2.realizations;
+package ru.ssau.tk.shnurok.lab2.functions.realizations;
 
-import ru.ssau.tk.shnurok.lab2.coredefenitions.AbstractTabulatedFunction;
-import ru.ssau.tk.shnurok.lab2.coredefenitions.Insertable;
-import ru.ssau.tk.shnurok.lab2.coredefenitions.MathFunction;
-import ru.ssau.tk.shnurok.lab2.coredefenitions.Removable;
+import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.AbstractTabulatedFunction;
+import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Insertable;
+import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
+import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Removable;
 
 import java.util.Arrays;
 
@@ -16,9 +16,9 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
         if (xValues.length!=yValues.length) throw new IllegalArgumentException("raznoe(");
 
-        this.count = xValues.length;
         this.xValues = Arrays.copyOf(xValues,xValues.length);
         this.yValues = Arrays.copyOf(yValues,yValues.length);
+        this.count = xValues.length;
 
     }
 
@@ -69,7 +69,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     protected double interpolate(double x, int floorIndex) {
-        return interpolate(x,xValues[floorIndex],xValues[floorIndex+1],yValues[floorIndex],yValues[floorIndex+1]);
+        return interpolate(x,xValues[floorIndex-1],xValues[floorIndex],yValues[floorIndex-1],yValues[floorIndex]);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     public double getY(int index) {
-        return xValues[index];
+        return yValues[index];
     }
 
     @Override

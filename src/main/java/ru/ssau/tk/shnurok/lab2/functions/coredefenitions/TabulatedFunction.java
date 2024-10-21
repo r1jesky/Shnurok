@@ -1,4 +1,4 @@
-package ru.ssau.tk.shnurok.lab2.coredefenitions;
+package ru.ssau.tk.shnurok.lab2.functions.coredefenitions;
 
 public interface TabulatedFunction extends MathFunction {
     int getCount();

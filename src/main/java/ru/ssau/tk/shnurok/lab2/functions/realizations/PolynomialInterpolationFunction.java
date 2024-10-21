@@ -1,12 +1,12 @@
-package ru.ssau.tk.shnurok.lab2.realizations;
+package ru.ssau.tk.shnurok.lab2.functions.realizations;
 
-import ru.ssau.tk.shnurok.lab2.coredefenitions.MathFunction;
+import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
 
-public class PolynomalInetrpolationFunction implements MathFunction {
+public class PolynomialInterpolationFunction implements MathFunction {
     private final double[] x;
     private final double[] y;
 
-    public PolynomalInetrpolationFunction(double[] x, double[] y){
+    public PolynomialInterpolationFunction(double[] x, double[] y){
         if (x.length != y.length){
             throw new IllegalArgumentException("Arrays should have same length");
         }

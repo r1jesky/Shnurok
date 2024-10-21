@@ -109,4 +109,5 @@ class LinkedListTabulatedFunctionTest {
         function.setY(0, 5);
         assertEquals(5, function.getY(0));
     }
+
 }

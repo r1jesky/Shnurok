@@ -1,9 +1,9 @@
-package ru.ssau.tk.shnurok.lab2.realizations;
+package ru.ssau.tk.shnurok.lab2.functions.realizations;
 
-import ru.ssau.tk.shnurok.lab2.coredefenitions.AbstractTabulatedFunction;
-import ru.ssau.tk.shnurok.lab2.coredefenitions.Insertable;
-import ru.ssau.tk.shnurok.lab2.coredefenitions.MathFunction;
-import ru.ssau.tk.shnurok.lab2.coredefenitions.Removable;
+import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.AbstractTabulatedFunction;
+import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Insertable;
+import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
+import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Removable;
 
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
 
@@ -183,19 +183,22 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         Node tmp = head;
 
         do{
-            if(tmp.x == x) tmp.y = y;
-            if (tmp.x > x && tmp.prev.x <x) {
-                Node node = new Node(x,y);
-                Node prev = tmp.prev;
 
-                prev.next = node;
-                node.next = tmp;
-                node.prev = prev;
-                tmp.prev = node;
+            if(tmp.x == x) tmp.y = y;
+            if (tmp.next.x > x && tmp.x <x) {
+                Node node = new Node(x,y);
+                Node next = tmp.next;
+
+                tmp.next = node;
+                node.prev = tmp;
+                node.next = next;
+                next.prev = node;
+
 
                 count++;
                 return;
             }
+            tmp = tmp.next;
         } while (tmp.next!=head);
 
         if (x<head.x){
@@ -212,6 +215,18 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
             count++;
             return;
 
+        }
+        if(tmp.next.x<x&&tmp.x<x){
+            Node node = new Node(x,y);
+            Node tail = head.prev;
+
+            tail.next = node;
+            node.next = head;
+            node.prev = tail;
+            head.prev = node;
+
+            count++;
+            return;
         }
     }
 

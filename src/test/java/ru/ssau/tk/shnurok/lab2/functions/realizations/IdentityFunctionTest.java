@@ -1,4 +1,4 @@
-package ru.ssau.tk.shnurok.lab2.realizations;
+package ru.ssau.tk.shnurok.lab2.functions.realizations;
 
 import org.junit.jupiter.api.Test;
 
