@@ -41,6 +41,9 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     }
 
     public LinkedListTabulatedFunction(double[] xValues, double[] yValues) {
+        LinkedListTabulatedFunction.checkLengthIsTheSame(xValues, yValues);
+        LinkedListTabulatedFunction.checkSorted(xValues);
+
         for (int i = 0; i < xValues.length; ++i) {
             addNode(xValues[i], yValues[i]);
         }

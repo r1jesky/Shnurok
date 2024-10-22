@@ -1,5 +1,6 @@
 package ru.ssau.tk.shnurok.lab2.functions.realizations;
 
+import ru.ssau.tk.shnurok.lab2.exeptions.InterpolationException;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.AbstractTabulatedFunction;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Insertable;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
@@ -14,12 +15,12 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
 
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
-        if (xValues.length!=yValues.length) throw new IllegalArgumentException("raznoe(");
+        ArrayTabulatedFunction.checkLengthIsTheSame(xValues,yValues);
+        ArrayTabulatedFunction.checkSorted(xValues);
 
         this.xValues = Arrays.copyOf(xValues,xValues.length);
         this.yValues = Arrays.copyOf(yValues,yValues.length);
         this.count = xValues.length;
-
     }
 
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {

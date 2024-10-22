@@ -29,11 +29,11 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
         }
     }
 
-    static void checkLengthIsTheSame(double[] xValues, double[] yValues){
+    public static void checkLengthIsTheSame(double[] xValues, double[] yValues){
         if (xValues.length != yValues.length) throw new DifferentLengthOfArraysException("Arrays must be same length");
     }
 
-    void checkSorted(double[] xValues){
+    public static void checkSorted(double[] xValues){
         for (int i = 0; i<xValues.length-1;i++){
             if (xValues[i]>xValues[i+1]) throw new ArrayIsNotSortedException("Arrays must be sorted from smallest to biggest");
         }
