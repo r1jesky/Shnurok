@@ -8,6 +8,7 @@ import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Removable;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
     protected double[] xValues;
@@ -160,7 +161,21 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     public Iterator<Point> iterator() {
-        throw new UnsupportedOperationException("Итерация не поддерживается");
+        return new Iterator<Point>() {
+            private int i = 0;
+
+            @Override
+            public boolean hasNext() {
+                return i < count;
+            }
+
+            @Override
+            public Point next() {
+                if(!hasNext()) throw new NoSuchElementException("");
+            return new Point(xValues[i],yValues[i++]);
+            }
+        };
+
     }
 
 }
