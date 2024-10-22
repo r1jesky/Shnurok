@@ -12,14 +12,14 @@ public final class FunctionsIO {
     }
 
     public static void writeTabulatedFunction(BufferedOutputStream outputStream, TabulatedFunction function) throws IOException {
-         try (DataOutputStream dos = new DataOutputStream(outputStream)) {
-             dos.writeInt(function.getCount());
-             for (Point point : function){
-                 dos.writeDouble(point.getX());
-                 dos.writeDouble(point.getY());
-             }
-             dos.flush();
-         }
+        try (DataOutputStream dos = new DataOutputStream(outputStream)) {
+            dos.writeInt(function.getCount());
+            for (Point point : function) {
+                dos.writeDouble(point.getX());
+                dos.writeDouble(point.getY());
+            }
+            dos.flush();
+        }
     }
 
     public static TabulatedFunction readTabulatedFunction(BufferedInputStream inputStream, TabulatedFunctionFactory factory) {
@@ -40,4 +40,14 @@ public final class FunctionsIO {
         }
     }
 
+    public static void serialize(BufferedOutputStream stream, TabulatedFunction function) throws IOException {
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(stream);
+        objectOutputStream.writeObject(function);
+        objectOutputStream.flush();
+    }
+
+    public static TabulatedFunction deserialize(BufferedInputStream stream) throws IOException, ClassNotFoundException {
+        ObjectInputStream objectInputStream = new ObjectInputStream(stream);
+        return (TabulatedFunction) objectInputStream.readObject();
+    }
 }
