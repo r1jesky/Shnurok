@@ -1,4 +1,4 @@
-package ru.ssau.tk.shnurok.lab2.functions.operations;
+package ru.ssau.tk.shnurok.lab2.functions.operations.interfaces;
 
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
 
