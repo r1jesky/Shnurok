@@ -1,6 +1,10 @@
 package ru.ssau.tk.shnurok.lab2.functions.coredefenitions;
 
-public interface TabulatedFunction extends MathFunction {
+import ru.ssau.tk.shnurok.lab2.functions.realizations.Point;
+
+import java.util.Iterator;
+
+public interface TabulatedFunction extends MathFunction, Iterable <Point>{
     int getCount();
 
     double getX(int index);
@@ -13,5 +17,7 @@ public interface TabulatedFunction extends MathFunction {
 
     double leftBound();
     double rightBound();
+
+    Iterator<Point> iterator();
 
 }

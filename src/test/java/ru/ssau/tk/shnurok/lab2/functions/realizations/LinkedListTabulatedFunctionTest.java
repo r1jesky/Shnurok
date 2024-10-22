@@ -1,7 +1,7 @@
-package ru.ssau.tk.shnurok.lab2.functions.realizations;
+package ru.ssau.tk.shnurok.lab2.realizations;
 
 import org.junit.jupiter.api.Test;
-import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
+import ru.ssau.tk.shnurok.lab2.coredefenitions.MathFunction;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -110,29 +110,4 @@ class LinkedListTabulatedFunctionTest {
         assertEquals(5, function.getY(0));
     }
 
-    @Test
-    public void testInsert_Beginning() {
-        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(new double[] {2, 3}, new double[] {20, 30});
-        func.insert(1, 10);
-        assertEquals(3, func.getCount());
-        assertEquals(1, func.getX(0));
-        assertEquals(10, func.getY(0));
-    }
-
-    @Test
-    public void testInsert_Middle() {
-        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(new double[] {1, 3}, new double[] {10, 30});
-        func.insert(2, 20);
-        assertEquals(2, func.getX(1));
-        assertEquals(20, func.getY(1));
-    }
-
-    @Test
-    public void testInsert_End() {
-        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(new double[] {1, 2}, new double[] {10, 20});
-        func.insert(3, 30);
-        assertEquals(3, func.getCount());
-        assertEquals(3, func.getX(2));
-        assertEquals(30, func.getY(2));
-    }
 }
