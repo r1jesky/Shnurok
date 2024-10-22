@@ -1,8 +1,12 @@
 package ru.ssau.tk.shnurok.lab2.functions.realizations;
 
+
 import org.junit.jupiter.api.Test;
+import ru.ssau.tk.shnurok.lab2.exeptions.ArrayIsNotSortedException;
+import ru.ssau.tk.shnurok.lab2.exeptions.DifferentLengthOfArraysException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ArrayTabulatedFunctionTest {
 
@@ -118,7 +122,7 @@ class ArrayTabulatedFunctionTest {
     }
 
     @Test
-    void InserTest(){
+    void InsertTest(){
         double[] xVal = {1.,2.,3.};
         double[] yVal = {2.,5.,8.};
         ArrayTabulatedFunction arrayTabulatedFunction = new ArrayTabulatedFunction(xVal,yVal);
@@ -136,4 +140,32 @@ class ArrayTabulatedFunctionTest {
 
         assertEquals(3,arrayTabulatedFunction.getX(arrayTabulatedFunction.xValues.length-1));
     }
+
+    @Test
+    void TestDefConstructorSortedArray() {
+        ArrayIsNotSortedException arrayIsNotSortedException= new ArrayIsNotSortedException();
+        assertNull(arrayIsNotSortedException.getMessage());
+    }
+
+    @Test
+    void TestMessageConstructorSortedArray() {
+        String message = "Array isn't sorted";
+        ArrayIsNotSortedException arrayIsNotSortedException = new ArrayIsNotSortedException(message);
+        assertEquals(message,arrayIsNotSortedException.getMessage());
+    }
+
+    @Test
+    void TestDefConstructorDifferentLength() {
+        DifferentLengthOfArraysException differentLengthOfArraysException= new DifferentLengthOfArraysException();
+        assertNull(differentLengthOfArraysException.getMessage());
+    }
+
+    @Test
+    void TestMessageConstructorDifferentLength() {
+        String message = "Arrays length isn't the same";
+        DifferentLengthOfArraysException differentLengthOfArraysException = new DifferentLengthOfArraysException(message);
+        assertEquals(message,differentLengthOfArraysException.getMessage());
+    }
+
+
 }

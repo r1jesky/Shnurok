@@ -252,7 +252,7 @@ private static final long serialVersionUID = 1L;
             next.prev = prev;
             prev.next = next;
         }
-    count--;
+        count--;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package ru.ssau.tk.shnurok.lab2.functions.realizations;
 
+import ru.ssau.tk.shnurok.lab2.exeptions.InterpolationException;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.AbstractTabulatedFunction;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Insertable;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
@@ -7,6 +8,7 @@ import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Removable;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
     protected double[] xValues;
@@ -15,12 +17,12 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
 
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
-        if (xValues.length!=yValues.length) throw new IllegalArgumentException("raznoe(");
+        ArrayTabulatedFunction.checkLengthIsTheSame(xValues,yValues);
+        ArrayTabulatedFunction.checkSorted(xValues);
 
         this.xValues = Arrays.copyOf(xValues,xValues.length);
         this.yValues = Arrays.copyOf(yValues,yValues.length);
         this.count = xValues.length;
-
     }
 
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
@@ -70,6 +72,8 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     protected double interpolate(double x, int floorIndex) {
+        if (x>xValues[floorIndex+1]||x<xValues[floorIndex]) throw new InterpolationException("x out of interpolate bounds");
+
         return interpolate(x,xValues[floorIndex-1],xValues[floorIndex],yValues[floorIndex-1],yValues[floorIndex]);
     }
 
@@ -157,7 +161,21 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     public Iterator<Point> iterator() {
-        throw new UnsupportedOperationException("Итерация не поддерживается");
+        return new Iterator<Point>() {
+            private int i = 0;
+
+            @Override
+            public boolean hasNext() {
+                return i < count;
+            }
+
+            @Override
+            public Point next() {
+                if(!hasNext()) throw new NoSuchElementException("");
+            return new Point(xValues[i],yValues[i++]);
+            }
+        };
+
     }
 
 }
