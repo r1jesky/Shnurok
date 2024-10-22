@@ -1,5 +1,6 @@
 package ru.ssau.tk.shnurok.lab2.functions.realizations;
 
+import ru.ssau.tk.shnurok.lab2.exeptions.InterpolationException;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.AbstractTabulatedFunction;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Insertable;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
@@ -122,6 +123,9 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         if (count == 1)
             return head.y;
         Node floorNode = getNode(floorIndex);
+
+        if (x>floorNode.next.x||x<floorNode.x) throw new InterpolationException("x is out of interpolation bounds");
+
         return interpolate(x,floorNode.x,floorNode.next.x,floorNode.y,floorNode.next.y);
 
     }

@@ -70,6 +70,8 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     protected double interpolate(double x, int floorIndex) {
+        if (x>xValues[floorIndex+1]||x<xValues[floorIndex]) throw new InterpolationException("x out of interpolate bounds");
+
         return interpolate(x,xValues[floorIndex-1],xValues[floorIndex],yValues[floorIndex-1],yValues[floorIndex]);
     }
 
