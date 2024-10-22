@@ -5,12 +5,14 @@ import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Insertable;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Removable;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
-
-
+public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable, Serializable {
+@Serial
+private static final long serialVersionUID = 1L;
 
     protected static class Node {
         public Node next=null;
