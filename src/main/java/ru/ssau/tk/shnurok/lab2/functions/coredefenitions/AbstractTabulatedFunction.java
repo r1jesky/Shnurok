@@ -2,10 +2,11 @@ package ru.ssau.tk.shnurok.lab2.functions.coredefenitions;
 
 import ru.ssau.tk.shnurok.lab2.exeptions.ArrayIsNotSortedException;
 import ru.ssau.tk.shnurok.lab2.exeptions.DifferentLengthOfArraysException;
+import ru.ssau.tk.shnurok.lab2.functions.realizations.Point;
 
 public abstract class AbstractTabulatedFunction implements TabulatedFunction {
 
-     protected abstract int floorIndexOfX(double x);
+    protected abstract int floorIndexOfX(double x);
 
     protected abstract double extrapolateLeft(double x);
 
@@ -37,6 +38,15 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
         for (int i = 0; i<xValues.length-1;i++){
             if (xValues[i]>xValues[i+1]) throw new ArrayIsNotSortedException("Arrays must be sorted from smallest to biggest");
         }
+    }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName()).append("size = ").append(getCount()).append("\n");
+        for (Point point : this){
+            sb.append("[").append(point.getX()).append(";").append(point.getY()).append("]\n");
+        }
+        return sb.toString();
     }
 
 

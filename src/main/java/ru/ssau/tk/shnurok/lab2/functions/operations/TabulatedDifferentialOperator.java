@@ -31,11 +31,6 @@ public class TabulatedDifferentialOperator implements DifferentialOperator <Tabu
 
     @Override
     public TabulatedFunction derive(TabulatedFunction function) {
-        return null;
-    }
-    /*
-    @Override
-    public TabulatedFunction derive(TabulatedFunction function) {
         // Получаем точки входной функции
         Point[] points = TabulatedFunctionOperationService.asPoints(function);
         int count = points.length;
@@ -51,5 +46,5 @@ public class TabulatedDifferentialOperator implements DifferentialOperator <Tabu
 
         // Создаем новый экземпляр табулированной функции
         return factory.create(xValues, yValues);
-    }*/
+    }
 }
