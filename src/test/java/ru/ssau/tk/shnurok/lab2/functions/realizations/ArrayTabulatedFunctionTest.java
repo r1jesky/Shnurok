@@ -1,8 +1,11 @@
 package ru.ssau.tk.shnurok.lab2.functions.realizations;
 
+
 import org.junit.jupiter.api.Test;
+import ru.ssau.tk.shnurok.lab2.exeptions.ArrayIsNotSortedException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ArrayTabulatedFunctionTest {
 
@@ -118,7 +121,7 @@ class ArrayTabulatedFunctionTest {
     }
 
     @Test
-    void InserTest(){
+    void InsertTest(){
         double[] xVal = {1.,2.,3.};
         double[] yVal = {2.,5.,8.};
         ArrayTabulatedFunction arrayTabulatedFunction = new ArrayTabulatedFunction(xVal,yVal);
@@ -135,5 +138,18 @@ class ArrayTabulatedFunctionTest {
         arrayTabulatedFunction.remove(1);
 
         assertEquals(3,arrayTabulatedFunction.getX(arrayTabulatedFunction.xValues.length-1));
+    }
+
+    @Test
+    void TestDefConstructor() {
+        ArrayIsNotSortedException arrayIsNotSortedException= new ArrayIsNotSortedException();
+        assertNull(arrayIsNotSortedException.getMessage());
+    }
+
+    @Test
+    void TestMessageConstructor() {
+        String message = "Array isn't sorted";
+        ArrayIsNotSortedException arrayIsNotSortedException = new ArrayIsNotSortedException(message);
+        assertEquals(message,arrayIsNotSortedException.getMessage());
     }
 }
