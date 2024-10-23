@@ -11,7 +11,7 @@ import java.nio.file.Path;
 
 public class TabulatedFunctionFileReader {
     public static void main(String[] args){
-        Path path = Paths.get("input","function.txt");
+        Path path = Paths.get("input/function.txt");
 
         try (BufferedReader arrFileReader = new BufferedReader(
                 new FileReader(path.toAbsolutePath().toString())
@@ -24,7 +24,7 @@ public class TabulatedFunctionFileReader {
             TabulatedFunctionFactory lListFactory = new LinkedListTabulatedFunctionFactory();
 
             TabulatedFunction arrFunction = FunctionsIO.readTabulatedFunction(arrFileReader,arrFactory);
-            TabulatedFunction lListFunction = FunctionsIO.readTabulatedFunction(lListReader,arrFactory);
+            TabulatedFunction lListFunction = FunctionsIO.readTabulatedFunction(lListReader,lListFactory);
 
             System.out.println(arrFunction.toString());
             System.out.println(lListFunction.toString());

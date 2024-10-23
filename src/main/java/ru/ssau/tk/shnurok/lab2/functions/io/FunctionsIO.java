@@ -5,11 +5,28 @@ import ru.ssau.tk.shnurok.lab2.functions.factory.TabulatedFunctionFactory;
 import ru.ssau.tk.shnurok.lab2.functions.realizations.Point;
 
 import java.io.*;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 
 public final class FunctionsIO {
     private FunctionsIO() {
         throw new UnsupportedOperationException("Cannot instantiate this class");
     }
+
+    public static void writeTabulatedFunction(BufferedWriter writer, TabulatedFunction function){
+        try(PrintWriter printWriter = new PrintWriter(writer)){
+            printWriter.println(function.getCount());
+            for (Point point : function){
+                printWriter.printf("%f %f\n", point.getX(), point.getY());
+            }
+
+            writer.flush();
+        } catch (IOException exception){
+            exception.printStackTrace();
+        }
+    }
+
 
     public static void writeTabulatedFunction(BufferedOutputStream outputStream, TabulatedFunction function) throws IOException {
          try (DataOutputStream dos = new DataOutputStream(outputStream)) {
@@ -22,7 +39,7 @@ public final class FunctionsIO {
          }
     }
 
-    public static TabulatedFunction readTabulatedFunction(BufferedInputStream inputStream, TabulatedFunctionFactory factory) {
+    public static TabulatedFunction readTabulatedFunction(BufferedInputStream inputStream, TabulatedFunctionFactory factory) throws IOException {
         try (DataInputStream dis = new DataInputStream(inputStream)) {
             int size = dis.readInt();
             double[] xValues = new double[size];
@@ -34,11 +51,32 @@ public final class FunctionsIO {
             }
 
             return factory.create(xValues, yValues);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+       }
+
     }
+
+public static TabulatedFunction readTabulatedFunction(BufferedReader reader, TabulatedFunctionFactory factory) throws IOException{
+    String line = reader.readLine();
+    int count = Integer.parseInt(line.trim());
+
+    double[] xValues = new double[count];
+    double[] yValues = new double[count];
+
+    NumberFormat numberFormat = NumberFormat.getInstance(Locale.forLanguageTag("ru"));
+
+    for (int i = 0; i<count; ++i){
+        try{
+            line = reader.readLine();
+            String[] parts = line.split(" ");
+            xValues[i] = numberFormat.parse(parts[0]).doubleValue();
+            yValues[i] = numberFormat.parse(parts[0]).doubleValue();
+        } catch (ParseException parseException){
+            throw new IOException(parseException);
+        }
+    }
+
+    return factory.create(xValues,yValues);
+}
 
     public static void serialize(BufferedOutputStream stream, TabulatedFunction function) throws IOException {
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(stream);
