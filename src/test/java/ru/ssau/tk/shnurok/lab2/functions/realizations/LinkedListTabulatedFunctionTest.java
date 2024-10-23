@@ -1,7 +1,8 @@
-package ru.ssau.tk.shnurok.lab2.realizations;
+package ru.ssau.tk.shnurok.lab2.functions.realizations;
 
 import org.junit.jupiter.api.Test;
-import ru.ssau.tk.shnurok.lab2.coredefenitions.MathFunction;
+import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
+import ru.ssau.tk.shnurok.lab2.functions.realizations.LinkedListTabulatedFunction;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,7 +36,7 @@ class LinkedListTabulatedFunctionTest {
         assertEquals(4, function.getCount());
 
         // Проверяем, что количество элементов соответствует ожиданиям
-        assertEquals(4, function.count);
+        assertEquals(4, function.getCount());
 
         // Check values at x = 1, 2, 3
         assertEquals(1, function.getX(1), 0.01);
