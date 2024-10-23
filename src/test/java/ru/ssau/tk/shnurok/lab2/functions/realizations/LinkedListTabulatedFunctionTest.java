@@ -116,8 +116,6 @@ class LinkedListTabulatedFunctionTest {
         assertEquals(5, function.getY(0));
     }
 
-
-
     @Test
         public void testIterator(){
             double[] x = new double[]{0.0, 1.0, 2.0, 3.0};
