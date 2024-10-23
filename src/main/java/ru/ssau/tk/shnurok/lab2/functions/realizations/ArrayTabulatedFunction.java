@@ -6,11 +6,15 @@ import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Insertable;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.Removable;
 
+import java.io.Serial;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
+    @Serial
+    private static final long serialVersionUID = 213124512L;
+
     protected double[] xValues;
     protected double[] yValues;
     protected int count;

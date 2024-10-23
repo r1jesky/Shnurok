@@ -18,7 +18,7 @@ public final class FunctionsIO {
         try(PrintWriter printWriter = new PrintWriter(writer)){
             printWriter.println(function.getCount());
             for (Point point : function){
-                printWriter.printf("%f %f%n", point.getX(), point.getY());
+                printWriter.printf("%f %f\n", point.getX(), point.getY());
             }
 
             writer.flush();
@@ -39,7 +39,7 @@ public final class FunctionsIO {
          }
     }
 
-    public static TabulatedFunction readTabulatedFunction(BufferedInputStream inputStream, TabulatedFunctionFactory factory) {
+    public static TabulatedFunction readTabulatedFunction(BufferedInputStream inputStream, TabulatedFunctionFactory factory) throws IOException {
         try (DataInputStream dis = new DataInputStream(inputStream)) {
             int size = dis.readInt();
             double[] xValues = new double[size];
@@ -51,10 +51,8 @@ public final class FunctionsIO {
             }
 
             return factory.create(xValues, yValues);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
         }
+
     }
 
     public static TabulatedFunction readTabulatedFunction(BufferedReader reader, TabulatedFunctionFactory factory) throws IOException{
@@ -66,7 +64,7 @@ public final class FunctionsIO {
 
         NumberFormat numberFormat = NumberFormat.getInstance(Locale.forLanguageTag("ru"));
 
-        for (int i = 0; i<count; i++){
+        for (int i = 0; i<count; ++i){
             try{
                 line = reader.readLine();
                 String[] parts = line.split(" ");

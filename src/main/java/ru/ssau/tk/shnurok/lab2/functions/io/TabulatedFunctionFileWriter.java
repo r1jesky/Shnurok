@@ -13,11 +13,11 @@ public class TabulatedFunctionFileWriter {
     public static void main(String[] args){
 
         try(BufferedWriter arrayFileWriter = new BufferedWriter(
-                new FileWriter(Paths.get("output","array function.txt").toAbsolutePath().toString())
+                new FileWriter(Paths.get("output/array function.txt").toAbsolutePath().toString())
         );
 
         BufferedWriter lListFileWriter = new BufferedWriter(
-                new FileWriter(Paths.get("output","linked list function.txt").toAbsolutePath().toString())
+                new FileWriter("output/linked list function.txt")
         )
         ){
             TabulatedFunction arrayFunction = new ArrayTabulatedFunction(
@@ -28,7 +28,7 @@ public class TabulatedFunctionFileWriter {
             );
 
             FunctionsIO.writeTabulatedFunction(arrayFileWriter,arrayFunction);
-            FunctionsIO.writeTabulatedFunction(arrayFileWriter,lListFunction);
+            FunctionsIO.writeTabulatedFunction(lListFileWriter,lListFunction);
         }
         catch (IOException exception){
             exception.printStackTrace();
