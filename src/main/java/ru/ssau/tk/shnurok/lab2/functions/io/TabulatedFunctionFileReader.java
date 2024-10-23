@@ -11,13 +11,13 @@ import java.nio.file.Path;
 
 public class TabulatedFunctionFileReader {
     public static void main(String[] args){
-        Path path = Paths.get("input/function.txt");
+        String path = "input/function.txt";
 
         try (BufferedReader arrFileReader = new BufferedReader(
-                new FileReader(path.toAbsolutePath().toString())
+                new FileReader(path)
         );
              BufferedReader lListReader = new BufferedReader(
-                     new FileReader(path.toAbsolutePath().toString())
+                     new FileReader(path)
              )
         ){
             TabulatedFunctionFactory arrFactory = new ArrayTabulatedFunctionFactory();

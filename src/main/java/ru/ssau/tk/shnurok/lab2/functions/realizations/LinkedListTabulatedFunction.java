@@ -258,26 +258,23 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     public Iterator<Point> iterator() {
-        //throw new UnsupportedOperationException("Итерация не поддерживается");
-
         return new Iterator<Point>() {
-            private Node node = head; // Изначально указываем на head
+            private Node node = head;
 
             @Override
             public boolean hasNext() {
-                return node != null; // Проверяем, есть ли следующий элемент
+                return node != null;
             }
 
             @Override
             public Point next() {
-                if (!hasNext()) {
-                    throw new NoSuchElementException("Нет больше элементов для итерации");
-                }
-                Point point = new Point(node.x, node.y); // Создаем объект Point
-                node = node.next; // Сдвигаем указатель на следующий элемент
-                return point; // Возвращаем текущую точку
+                if (!hasNext())
+                    throw new NoSuchElementException("");
+
+                Point point = new Point(node.x, node.y);
+                node = (node.next == head) ? null : node.next;
+                return point;
             }
         };
-
     }
 }
