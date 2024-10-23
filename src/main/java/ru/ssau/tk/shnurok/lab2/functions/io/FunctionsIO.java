@@ -69,7 +69,7 @@ public static TabulatedFunction readTabulatedFunction(BufferedReader reader, Tab
             line = reader.readLine();
             String[] parts = line.split(" ");
             xValues[i] = numberFormat.parse(parts[0]).doubleValue();
-            yValues[i] = numberFormat.parse(parts[0]).doubleValue();
+            yValues[i] = numberFormat.parse(parts[1]).doubleValue();
         } catch (ParseException parseException){
             throw new IOException(parseException);
         }

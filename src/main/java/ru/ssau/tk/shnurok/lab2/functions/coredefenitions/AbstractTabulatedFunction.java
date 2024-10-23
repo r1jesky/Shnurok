@@ -25,8 +25,13 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
         else if (x > rightBound()) return extrapolateRight(x);
 
         else {
-            if (indexOfX(x) != -1) return getY(indexOfX(x));
-            else return interpolate(x, floorIndexOfX(x));
+            int index = indexOfX(x);
+            if (index != -1) {
+                return getY(index);
+            } else {
+                return interpolate(x, floorIndexOfX(x));
+            }
+
         }
     }
 

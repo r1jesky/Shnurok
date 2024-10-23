@@ -11,8 +11,9 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable, Serializable {
-@Serial
-private static final long serialVersionUID = 1L;
+
+    @Serial
+    private static final long serialVersionUID = -6963720079632410406L;
 
     protected static class Node {
         public Node next=null;
