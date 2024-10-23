@@ -11,6 +11,20 @@ public final class FunctionsIO {
         throw new UnsupportedOperationException("Cannot instantiate this class");
     }
 
+    public static void writeTabulatedFunction(BufferedWriter writer, TabulatedFunction function){
+        try(PrintWriter printWriter = new PrintWriter(writer)){
+            printWriter.println(function.getCount());
+            for (Point point : function){
+                printWriter.printf("%f %f%n", point.getX(), point.getY());
+            }
+
+            writer.flush();
+        } catch (IOException exception){
+            exception.printStackTrace();
+        }
+    }
+
+
     public static void writeTabulatedFunction(BufferedOutputStream outputStream, TabulatedFunction function) throws IOException {
          try (DataOutputStream dos = new DataOutputStream(outputStream)) {
              dos.writeInt(function.getCount());
