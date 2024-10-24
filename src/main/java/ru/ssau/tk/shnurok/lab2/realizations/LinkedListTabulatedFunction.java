@@ -1,9 +1,13 @@
 package ru.ssau.tk.shnurok.lab2.realizations;
 
 import ru.ssau.tk.shnurok.lab2.coredefenitions.AbstractTabulatedFunction;
+import ru.ssau.tk.shnurok.lab2.coredefenitions.Insertable;
 import ru.ssau.tk.shnurok.lab2.coredefenitions.MathFunction;
+import ru.ssau.tk.shnurok.lab2.coredefenitions.Removable;
 
-public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
+public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
+
+
 
     protected static class Node {
         public Node next=null;
@@ -51,6 +55,14 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         if (xFrom == xTo) {
             for (int i = 0; i < count; i++) {
                 addNode(xFrom, source.apply(xFrom));
+            }
+        }
+        else {
+            double step = (xTo - xFrom) / (count - 1);
+            for (int i = 0; i < count; ++i) {
+                double x = xFrom + step * i;
+                double y = source.apply(x);
+                addNode(x, y);
             }
         }
 
@@ -163,5 +175,75 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
     @Override
     public double rightBound() {
         return head.prev.x;
+    }
+
+    @Override
+    public void insert(double x, double y) {
+        if (head == null) addNode(x,y);
+        Node tmp = head;
+
+        do{
+
+            if(tmp.x == x) tmp.y = y;
+            if (tmp.next.x > x && tmp.x <x) {
+                Node node = new Node(x,y);
+                Node next = tmp.next;
+
+                tmp.next = node;
+                node.prev = tmp;
+                node.next = next;
+                next.prev = node;
+
+
+                count++;
+                return;
+            }
+            tmp = tmp.next;
+        } while (tmp.next!=head);
+
+        if (x<head.x){
+            Node node = new Node(x,y);
+
+            Node tail = head.prev;
+
+            tail.next = node;
+            node.next = head;
+            node.prev = tail;
+            head.prev = node;
+            head = node;
+
+            count++;
+            return;
+
+        }
+        if(tmp.next.x<x&&tmp.x<x){
+            Node node = new Node(x,y);
+            Node tail = head.prev;
+
+            tail.next = node;
+            node.next = head;
+            node.prev = tail;
+            head.prev = node;
+
+            count++;
+            return;
+        }
+    }
+
+    @Override
+    public void remove(int index) {
+        if (count==0) return;
+
+        Node del = getNode(index);
+
+        if (count==1) head = null;
+        else {
+            if(del == head) head = head.next;
+            Node prev = del.prev;
+            Node next = del.next;
+            next.prev = prev;
+            prev.next = next;
+        }
+    count--;
     }
 }
