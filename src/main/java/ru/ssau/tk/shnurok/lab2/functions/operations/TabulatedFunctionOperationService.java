@@ -60,7 +60,9 @@ public class TabulatedFunctionOperationService {
 
         int i = 0;
         for (Point point : tabulatedFunction) { // Проходим по табулированной функции
-            points[i++] = point; // Записываем точку в массив
+            points[i] = point; // Записываем точку в массив
+            i++;
+
 
         }
         return points; // Возвращаем массив точек
