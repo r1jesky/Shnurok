@@ -10,4 +10,12 @@ public abstract class SteppingDifferentialOperator implements DifferentialOperat
         if(step<=0||Double.isNaN(step)||Double.isInfinite(step)) throw new IllegalArgumentException("step should be scalable positive");
         this.step = step;
     }
+
+    public void setStep(double step) {
+        this.step = step;
+    }
+
+    public double getStep() {
+        return step;
+    }
 }
