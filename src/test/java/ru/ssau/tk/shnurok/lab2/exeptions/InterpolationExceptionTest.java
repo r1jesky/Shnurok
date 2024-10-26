@@ -1,23 +1,24 @@
-package ru.ssau.tk.shnurok.lab2.exeptions.exeptions;
+package ru.ssau.tk.shnurok.lab2.exeptions;
 
 import org.junit.jupiter.api.Test;
-import ru.ssau.tk.shnurok.lab2.exeptions.ArrayIsNotSortedException;
+import ru.ssau.tk.shnurok.lab2.exeptions.InterpolationException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-class ArrayIsNotSortedExceptionTest {
+class InterpolationExceptionTest {
 
     @Test
     void testDefaultConstructor() {
-        ArrayIsNotSortedException exception = new ArrayIsNotSortedException();
+        InterpolationException exception = new InterpolationException();
         assertNull(exception.getMessage(), "Сообщение исключения должно быть null");
     }
 
     @Test
     void testConstructorWithMessage() {
-        String message = "Массив не отсортирован";
-        ArrayIsNotSortedException exception = new ArrayIsNotSortedException(message);
+        String message = "Ошибка интерполяции";
+        InterpolationException exception = new InterpolationException(message);
         assertEquals(message, exception.getMessage(), "Сообщение исключения не совпадает с ожидаемым");
     }
 }
+

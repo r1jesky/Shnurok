@@ -1,4 +1,4 @@
-package ru.ssau.tk.shnurok.lab2.functions.io;
+package ru.ssau.tk.shnurok.lab2.io;
 
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.TabulatedFunction;
 import ru.ssau.tk.shnurok.lab2.functions.factory.TabulatedFunctionFactory;

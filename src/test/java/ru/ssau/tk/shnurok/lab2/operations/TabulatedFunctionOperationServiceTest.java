@@ -1,4 +1,4 @@
-package ru.ssau.tk.shnurok.lab2.functions.operations;
+package ru.ssau.tk.shnurok.lab2.operations;
 
 
 
@@ -9,6 +9,7 @@ import ru.ssau.tk.shnurok.lab2.functions.factory.ArrayTabulatedFunctionFactory;
 import ru.ssau.tk.shnurok.lab2.functions.factory.TabulatedFunctionFactory;
 import ru.ssau.tk.shnurok.lab2.functions.realizations.ArrayTabulatedFunction;
 import ru.ssau.tk.shnurok.lab2.functions.realizations.Point;
+import ru.ssau.tk.shnurok.lab2.operations.TabulatedFunctionOperationService;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,11 +1,12 @@
-package ru.ssau.tk.shnurok.lab2.functions.operations.abstractclasses;
+package ru.ssau.tk.shnurok.lab2.operations.abstractclasses;
 
 import org.junit.jupiter.api.Test;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
+import ru.ssau.tk.shnurok.lab2.operations.abstractclasses.SteppingDifferentialOperator;
 
 import static org.junit.jupiter.api.Assertions.*;
 public class SteppingDifferentialOperatorTest{
-    private static class TestForSteppingDifferentOperator extends SteppingDifferentialOperator{
+    private static class TestForSteppingDifferentOperator extends SteppingDifferentialOperator {
         public TestForSteppingDifferentOperator(double step){
             super(step);
         }

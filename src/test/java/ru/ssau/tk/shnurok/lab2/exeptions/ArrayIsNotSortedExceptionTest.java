@@ -1,23 +1,23 @@
-package ru.ssau.tk.shnurok.lab2.exeptions.exeptions;
+package ru.ssau.tk.shnurok.lab2.exeptions;
 
 import org.junit.jupiter.api.Test;
-import ru.ssau.tk.shnurok.lab2.exeptions.DifferentLengthOfArraysException;
+import ru.ssau.tk.shnurok.lab2.exeptions.ArrayIsNotSortedException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-class DifferentLengthOfArraysExceptionTest {
+class ArrayIsNotSortedExceptionTest {
 
     @Test
     void testDefaultConstructor() {
-        DifferentLengthOfArraysException exception = new DifferentLengthOfArraysException();
+        ArrayIsNotSortedException exception = new ArrayIsNotSortedException();
         assertNull(exception.getMessage(), "Сообщение исключения должно быть null");
     }
 
     @Test
     void testConstructorWithMessage() {
-        String message = "Длины массивов различны";
-        DifferentLengthOfArraysException exception = new DifferentLengthOfArraysException(message);
+        String message = "Массив не отсортирован";
+        ArrayIsNotSortedException exception = new ArrayIsNotSortedException(message);
         assertEquals(message, exception.getMessage(), "Сообщение исключения не совпадает с ожидаемым");
     }
 }

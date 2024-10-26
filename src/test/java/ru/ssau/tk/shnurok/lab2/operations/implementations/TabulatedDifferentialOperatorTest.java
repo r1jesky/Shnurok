@@ -1,14 +1,11 @@
-package ru.ssau.tk.shnurok.lab2.functions.operations.implementations;
+package ru.ssau.tk.shnurok.lab2.operations.implementations;
 
 import org.junit.jupiter.api.Test;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.TabulatedFunction;
-import ru.ssau.tk.shnurok.lab2.functions.factory.ArrayTabulatedFunctionFactory;
 import ru.ssau.tk.shnurok.lab2.functions.factory.LinkedListTabulatedFunctionFactory;
 import ru.ssau.tk.shnurok.lab2.functions.realizations.ArrayTabulatedFunction;
 import ru.ssau.tk.shnurok.lab2.functions.realizations.LinkedListTabulatedFunction;
-import ru.ssau.tk.shnurok.lab2.functions.realizations.Point;
-
-import java.util.Iterator;
+import ru.ssau.tk.shnurok.lab2.operations.implementations.TabulatedDifferentialOperator;
 
 import static org.junit.jupiter.api.Assertions.*;
 

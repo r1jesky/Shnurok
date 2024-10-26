@@ -1,11 +1,10 @@
-package ru.ssau.tk.shnurok.lab2.functions.io;
+package ru.ssau.tk.shnurok.lab2.io;
 
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.TabulatedFunction;
-import ru.ssau.tk.shnurok.lab2.functions.operations.implementations.TabulatedDifferentialOperator;
+import ru.ssau.tk.shnurok.lab2.operations.implementations.TabulatedDifferentialOperator;
 import ru.ssau.tk.shnurok.lab2.functions.realizations.ArrayTabulatedFunction;
 
 import java.io.*;
-import java.nio.file.Paths;
 
 public class ArrayTabulatedFunctionSerialization {
     public static void main(String[] args){

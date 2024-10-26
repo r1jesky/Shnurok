@@ -1,7 +1,7 @@
-package ru.ssau.tk.shnurok.lab2.functions.operations.abstractclasses;
+package ru.ssau.tk.shnurok.lab2.operations.abstractclasses;
 
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
-import ru.ssau.tk.shnurok.lab2.functions.operations.interfaces.DifferentialOperator;
+import ru.ssau.tk.shnurok.lab2.operations.interfaces.DifferentialOperator;
 
 public abstract class SteppingDifferentialOperator implements DifferentialOperator<MathFunction> {
     protected double step;

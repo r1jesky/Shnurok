@@ -1,7 +1,8 @@
-package ru.ssau.tk.shnurok.lab2.functions.operations.implementations;
+package ru.ssau.tk.shnurok.lab2.operations.implementations;
 
 import org.junit.jupiter.api.Test;
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.MathFunction;
+import ru.ssau.tk.shnurok.lab2.operations.implementations.MiddleSteppingDifferentialOperator;
 
 import static org.junit.jupiter.api.Assertions.*;
 class MiddleSteppingDifferentialOperatorTest {
