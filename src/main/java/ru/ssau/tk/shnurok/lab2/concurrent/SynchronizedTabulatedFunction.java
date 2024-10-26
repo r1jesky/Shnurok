@@ -12,6 +12,10 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
         this.function = function;
     }
 
+    public interface Operation <T>{
+        
+    }
+
     @Override
     public int getCount() {
         return function.getCount();
