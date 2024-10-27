@@ -1,10 +1,10 @@
-package ru.ssau.tk.shnurok.lab2.functions.operations.implementations;
+package ru.ssau.tk.shnurok.lab2.operations.implementations;
 
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.TabulatedFunction;
 import ru.ssau.tk.shnurok.lab2.functions.factory.ArrayTabulatedFunctionFactory;
 import ru.ssau.tk.shnurok.lab2.functions.factory.TabulatedFunctionFactory;
-import ru.ssau.tk.shnurok.lab2.functions.operations.TabulatedFunctionOperationService;
-import ru.ssau.tk.shnurok.lab2.functions.operations.interfaces.DifferentialOperator;
+import ru.ssau.tk.shnurok.lab2.operations.TabulatedFunctionOperationService;
+import ru.ssau.tk.shnurok.lab2.operations.interfaces.DifferentialOperator;
 import ru.ssau.tk.shnurok.lab2.functions.realizations.Point;
 
 public class TabulatedDifferentialOperator implements DifferentialOperator<TabulatedFunction> {

@@ -1,4 +1,4 @@
-package ru.ssau.tk.shnurok.lab2.functions.io;
+package ru.ssau.tk.shnurok.lab2.io;
 
 import ru.ssau.tk.shnurok.lab2.functions.coredefenitions.TabulatedFunction;
 import ru.ssau.tk.shnurok.lab2.functions.factory.ArrayTabulatedFunctionFactory;
@@ -6,8 +6,6 @@ import ru.ssau.tk.shnurok.lab2.functions.factory.LinkedListTabulatedFunctionFact
 import ru.ssau.tk.shnurok.lab2.functions.factory.TabulatedFunctionFactory;
 
 import java.io.*;
-import java.nio.file.Paths;
-import java.nio.file.Path;
 
 public class TabulatedFunctionFileReader {
     public static void main(String[] args){
