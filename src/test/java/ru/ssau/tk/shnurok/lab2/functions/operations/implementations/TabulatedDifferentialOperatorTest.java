@@ -73,4 +73,13 @@ class TabulatedDifferentialOperatorTest {
         assertInstanceOf(LinkedListTabulatedFunctionFactory.class, differentialOperator.getFactory());
     }
 
+    @Test
+    void testDeriveSynchronously() {
+        tabulatedFunction = createLinkedListTabulatedFunction();
+        differentialOperator = new TabulatedDifferentialOperator(new LinkedListTabulatedFunctionFactory());
+        TabulatedFunction derivedFunction = differentialOperator.deriveSynchronously(tabulatedFunction);
+
+        assertEquals(16.5, derivedFunction.apply(6), 0.01);
+    }
+
 }
