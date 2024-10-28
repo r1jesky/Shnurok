@@ -23,7 +23,7 @@ public class MultiplyingTaskExecutor {
 
         Thread.sleep(200);
 
-        System.out.println("Thread after multiplying");
+        System.out.println("Function after multiplying");
         for (int i = 0; i<tabulatedFunction.getCount(); ++i){
             System.out.printf("x: %f, y: %f%n", tabulatedFunction.getX(i),tabulatedFunction.getY(i));
         }
