@@ -14,7 +14,7 @@ public class MultiplyingTask implements Runnable {
     public void run() {
         for (int i = 0; i<function.getCount(); i++){
             synchronized (function) {
-                function.setY(i, function.indexOfY(i) * 2);
+                function.setY(i, function.getY(i) * 2);
             }
         }
 
